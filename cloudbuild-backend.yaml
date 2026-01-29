@@ -23,6 +23,6 @@ steps:
     - --region=us-central1
     - --allow-unauthenticated
     - --vpc-connector=serverless-connector
-    - --egress-settings=all-traffic
+    - --vpc-egress=all-traffic
     - --set-env-vars=DB_HOST=10.175.48.3,DB_NAME=appdb,DB_USER=postgres
     - --set-secrets=DB_PASS=db-password:latest
