@@ -17,4 +17,5 @@ steps:
     - --region=us-central1
     - --allow-unauthenticated
     - --vpc-connector=serverless-connector
-    - --set-env-vars=DB_HOST=10.x.x.x,DB_NAME=appdb,DB_USER=postgres,DB_PASS=secret
+    - --set-env-vars=DB_HOST=10.175.48.3,DB_NAME=appdb,DB_USER=postgres,DB_PASS=secret
+    - --set-secrets=DB_PASS=db-password:latest
