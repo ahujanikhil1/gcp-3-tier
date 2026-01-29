@@ -1,5 +1,3 @@
-options:
-  default_logs_bucket_behavior: CLOUD_LOGGING_ONLY
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
