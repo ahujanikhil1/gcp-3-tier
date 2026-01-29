@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t',
+    'us-central1-docker.pkg.dev/$PROJECT_ID/gcp-3tier-repo/backend', 'backend']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push',
+    'us-central1-docker.pkg.dev/$PROJECT_ID/gcp-3tier-repo/backend']
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+    - gcloud
+    - run
+    - deploy
+    - backend-service
+    - --image=us-central1-docker.pkg.dev/$PROJECT_ID/gcp-3tier-repo/backend
+    - --region=us-central1
+    - --allow-unauthenticated
+    - --vpc-connector=serverless-connector
+    - --set-env-vars=DB_HOST=10.x.x.x,DB_NAME=appdb,DB_USER=postgres,DB_PASS=secret
